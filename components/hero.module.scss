@@ -1,0 +1,57 @@
+@import "./global.scss";
+
+.hero {
+  @include rowCenter;
+  justify-content: space-around;
+  gap: 1rem;
+  padding-left: 1.5rem;
+  margin-top: 2rem;
+  @include tablet {
+    flex-direction: column;
+    padding-right: 1.5rem;
+  }
+  .info {
+    width: 50%;
+    @include tablet {
+      width: 100%;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 400;
+      color: rgb(206, 129, 29);
+      margin-bottom: 2rem;
+    }
+    .links {
+      div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 5px;
+        border: 1px solid grey;
+        margin-bottom: 1rem;
+        padding: 0 15px;
+        font-size: 1.2rem;
+        height: 4rem;
+        background: white;
+        width: 90%;
+        @include tablet {
+          width: 100%;
+        }
+        cursor: pointer;
+        &:hover {
+          box-shadow: 0 0 3px 3px rgba(128, 128, 128, 0.438);
+        }
+      }
+    }
+  }
+  .images {
+    width: 50%;
+    @include tablet {
+      width: 80%;
+    }
+    img {
+      height: 80%;
+      width: 100%;
+    }
+  }
+}

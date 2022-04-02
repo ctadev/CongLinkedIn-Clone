@@ -1,0 +1,166 @@
+@import "./global.scss";
+
+.sidebar {
+  width: 250px;
+  color: white;
+  position: sticky;
+  top: 100px;
+  @include tablet {
+    width: 90VW;
+    position: static;
+  }
+  //first section bar
+  .side1 {
+    @include columnCenter;
+    background: rgb(58, 56, 56);
+    border-radius: 10px;
+    .users {
+      width: 100%;
+      @include columnCenter;
+      border-bottom: 1px solid grey;
+      padding-bottom: 1rem;
+      position: relative;
+      @include tablet {
+        border: none;
+      }
+      .avatar {
+        margin: 1.5rem 0;
+        z-index: 5;
+        height: 70px;
+        width: 70px;
+        border: 2px solid white;
+        cursor: pointer;
+      }
+      .info {
+        @include columnCenter;
+      }
+      .top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4rem;
+        background-image: url("https://images.fastcompany.net/image/upload/w_596,c_limit,q_auto:best,f_auto/wp-cms/uploads/2021/03/LinkedIn-Default-Background-2020-.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+    }
+
+    .profile {
+      @include columnCenter;
+      width: 100%;
+      border-bottom: 1px solid grey;
+      padding: 1rem 0;
+      @include tablet {
+        display: none;
+      }
+      div {
+        @include rowCenter;
+        justify-content: space-between;
+        width: 90%;
+        h2 {
+          font-size: 1rem;
+        }
+        p {
+          font-size: 0.8rem;
+          color: rgb(93, 93, 250);
+        }
+      }
+    }
+
+    .prem {
+      width: 100%;
+      @include columnCenter;
+      border-bottom: 1px solid grey;
+      padding: 1rem 0;
+      @include tablet {
+        display: none;
+      }
+      p {
+        font-size: 0.9rem;
+      }
+      h3 {
+        font-size: 1rem;
+      }
+      .try {
+        @include rowCenter;
+        gap: 0.2rem;
+        .icon {
+          background: linear-gradient(grey, yellow);
+          border-radius: 5px;
+        }
+      }
+    }
+
+    .item {
+      padding: 1rem 0;
+      @include rowCenter;
+      @include tablet {
+        display: none;
+      }
+    }
+  }
+
+  //second section bar
+
+  .side2 {
+    margin-top: 1.5rem;
+    background: rgb(58, 56, 56);
+    border-radius: 10px;
+    @include tablet {
+      display: none;
+    }
+    .sec1 {
+      @include columnCenter;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 15px 10px;
+      color: rgb(93, 93, 250);
+      h1 {
+        font-size: 1rem;
+      }
+      div {
+        width: 100%;
+        @include rowCenter;
+        justify-content: space-between;
+        h2 {
+          font-size: 1rem;
+        }
+        p {
+          color: white;
+        }
+      }
+    }
+
+    .sec2 {
+      border-top: 1px solid grey;
+      padding: 15px 10px;
+      @include rowCenter;
+      font-weight: bold;
+    }
+  }
+}
+
+.sidebar.dark {
+  color: black;
+  .side1 {
+    background: white;
+    .users {
+      .avatar {
+        border: 2px solid black;
+      }
+    }
+  }
+  .side2 {
+    background-color: white;
+    .sec1 {
+      div {
+        p {
+          color: black;
+        }
+      }
+    }
+  }
+}

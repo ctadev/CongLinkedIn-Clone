@@ -1,0 +1,85 @@
+@import "./global.scss";
+
+.posts {
+  background: rgb(58, 56, 56);
+  margin-top: 1.5rem;
+  border-radius: 5px;
+  width: 100%;
+  @include columnCenter;
+  .sec1 {
+    width: 100%;
+    padding: 10px 15px;
+    @include rowCenter;
+    justify-content: space-between;
+    .avInfo {
+      @include rowCenter;
+      gap: 0.5rem;
+      div {
+        p {
+          opacity: 0.7;
+        }
+        @include mobile {
+          h2 {
+            font-size: 1.2rem;
+          }
+          .email {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .sec2 {
+    width: 100%;
+    @include columnCenter;
+    h4 {
+      width: 100%;
+      padding: 0 15px;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      margin-top: 1rem;
+      font-size: 1.3rem;
+    }
+    .imageContainer {
+      height: 500px;
+      width: 100%;
+      background-color: aqua;
+      @include tablet {
+        height: 400px;
+      }
+      @include mobile {
+        height: 300px;
+      }
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    .likes {
+      width: 95%;
+      padding: 10px 15px 10px 15px;
+      @include rowCenter;
+      border-top: 1px solid grey;
+      margin-top: 0.5rem;
+      justify-content: space-around;
+      div {
+        @include rowCenter;
+        gap: 0.5rem;
+        &:hover {
+          color: palevioletred;
+          cursor: pointer;
+        }
+        .share {
+          transform: rotate(540deg);
+        }
+      }
+    }
+  }
+}
+
+.posts.dark {
+  background: white;
+  color: black;
+}

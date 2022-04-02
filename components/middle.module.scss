@@ -1,0 +1,83 @@
+@import "./global.scss";
+
+.middle {
+  width: 40VW;
+  max-width: 650px;
+  border-radius: 5px;
+  color: white;
+  padding-bottom: 1.5rem;
+  @include large {
+    width: 60VW;
+  }
+  @include desktop {
+    width: 55VW;
+  }
+  @include tablet {
+    width: 90VW;
+  }
+  .post {
+    @include columnCenter;
+    background: rgb(58, 56, 56);
+    border-radius: 5px;
+    .sec1 {
+      width: 100%;
+      padding: 15px 15px 10px 15px;
+      @include rowCenter;
+      gap: 0.5rem;
+      .avatar {
+        width: 50px;
+        height: 50px;
+      }
+      button {
+        width: 90%;
+        border-radius: 25px;
+        height: 3rem;
+        border: 1px solid white;
+        outline: none;
+        font-family: "Ubuntu", sans-serif;
+        padding: 5px 15px;
+        font-weight: bold;
+        text-align: left;
+        color: white;
+        background: transparent;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          transform: scale(1.02);
+        }
+      }
+    }
+    .sec2 {
+      @include rowCenter;
+      gap: 2.5rem;
+      padding-bottom: 1rem;
+      flex-wrap: wrap;
+      @include desktop {
+        gap: 1.5rem;
+      }
+      div {
+        @include rowCenter;
+        gap: 5px;
+        h1 {
+          @include desktop {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.middle.dark {
+  color: black;
+  .post {
+    background-color: white;
+    .sec1 {
+      button {
+        border: 1px solid black;
+        color: black;
+      }
+    }
+  }
+}

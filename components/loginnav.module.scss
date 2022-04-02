@@ -1,0 +1,43 @@
+@import "./global.scss";
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100px;
+  .image {
+    position: relative;
+    height: 80px;
+    width: 160px;
+    cursor: pointer;
+  }
+  .links {
+    display: flex;
+    gap: 1.5rem;
+    .icons {
+      display: flex;
+      gap: 2rem;
+      color: grey;
+      border-right: 1px solid grey;
+      padding-right: 1.5rem;
+      @include tablet{
+          display: none;
+      }
+    }
+    button {
+      width: 7rem;
+      height: 3rem;
+      border-radius: 30px;
+      border: 2px solid rgb(62, 62, 235);
+      font-size: 1rem;
+      font-weight: bolder;
+      color: rgb(62, 62, 235);
+      background: none;
+      cursor: pointer;
+      &:hover {
+        border: 3px solid rgb(62, 62, 235);
+        background-color: rgba(109, 167, 243, 0.199);
+      }
+    }
+  }
+}

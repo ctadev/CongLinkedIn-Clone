@@ -1,0 +1,70 @@
+@import "./global.scss";
+
+.menu {
+  @include columnCenter;
+  cursor: pointer;
+  .svg {
+    font-size: 2rem;
+    @include desktop {
+      font-size: 1.5rem;
+    }
+  }
+  p {
+    @include desktop {
+      display: none;
+    }
+  }
+  .active {
+    background-color: white;
+    height: 2px;
+    animation: animate 0.5s forwards ease;
+    margin-top: 5px;
+  }
+  @keyframes animate {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: calc(100% + 20px);
+    }
+  }
+}
+
+.menu.Jobs {
+  @include tablet {
+    display: none;
+  }
+}
+
+.menu.Work {
+  @include tablet {
+    display: none;
+  }
+}
+
+.menu.Home{
+  @include mobile{
+    display: none;
+  }
+}
+
+.menu.Me {
+  .svg {
+    height: 35px;
+    width: 35px;
+    @include desktop {
+      height: 25px;
+      width: 25px;
+    }
+  }
+  @include tablet {
+    display: none;
+  }
+}
+
+
+.menu.dark{
+  .active{
+    background-color: black;
+  }
+}
