@@ -40,7 +40,7 @@ function Posts({ data }) {
             <h2>{data.username}</h2>
             <p className={s.email}>{data.email}</p>
             <p>
-              <TimeAgo datetime={data.createdAt} />
+              Just now
             </p>
           </div>
         </div>
