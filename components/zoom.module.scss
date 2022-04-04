@@ -1,0 +1,348 @@
+@import "./global.scss";
+
+.zoom {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: 70%;
+  height: 70%;
+  border-radius: 10px;
+  z-index: 5000;
+  transition: all 0.3s ease;
+  @include rowCenter;
+  @include desktop {
+    width: 90%;
+  }
+  .image {
+    height: 100%;
+    width: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    cursor: pointer;
+    @include desktop {
+      width: 60%;
+    }
+    @include tablet {
+      display: none;
+    }
+  }
+
+  .noImage {
+    display: none;
+  }
+
+  .userInfos1 {
+    height: 100%;
+    width: 30%;
+    background: rgb(58, 56, 56);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+    padding-bottom: 1rem;
+    overflow-y: scroll;
+    scrollbar-width: none; 
+    &::-webkit-scrollbar {
+    width: 0;
+  }
+    @include desktop {
+      width: 40%;
+    }
+    @include tablet {
+      width: 90%;
+    }
+    .sec1 {
+      @include rowCenter;
+      justify-content: space-between;
+      margin: 10px 10px;
+      .avInfo {
+        @include rowCenter;
+        gap: 0.5rem;
+      }
+      .close {
+        cursor: pointer;
+        padding-bottom: 3rem;
+      }
+    }
+
+    .sec2 {
+      h4 {
+        margin: 10px 10px;
+        cursor: pointer;
+      }
+    }
+
+    .likes {
+      width: 100%;
+      padding: 10px 15px 10px 15px;
+      @include rowCenter;
+      margin-top: 0.5rem;
+      justify-content: space-around;
+      div {
+        @include rowCenter;
+        gap: 0.5rem;
+        &:hover {
+          color: palevioletred;
+          cursor: pointer;
+        }
+        .share {
+          transform: rotate(540deg);
+        }
+      }
+    }
+
+    .borderIcon {
+      width: 100%;
+      border-bottom: 1px solid grey;
+    }
+
+    form {
+      @include columnCenter;
+      gap: 0.5rem;
+      padding: 0 10px;
+      border-bottom: 1px solid grey;
+      textarea {
+        width: 100%;
+        height: 5rem;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        padding: 5px;
+      }
+      button {
+        height: 2rem;
+        width: 5rem;
+        color: black;
+        background: white;
+        border-radius: 30px;
+        border: none;
+        outline: none;
+        margin-bottom: 1rem;
+        &:hover {
+          cursor: pointer;
+          opacity: 0.8;
+        }
+      }
+    }
+
+    .commentContainer {
+      .comments {
+        @include rowCenter;
+        justify-content: flex-start;
+        padding: 10px;
+        gap: 0.5rem;
+        .commentInfo {
+          background-color: rgb(44, 43, 43);
+          width: 90%;
+          padding: 5px;
+          border-radius: 5px;
+          h2 {
+            font-size: 1rem;
+          }
+          p {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+          }
+        }
+      }
+      .commentIcon {
+        @include rowCenter;
+        gap: 1rem;
+        font-size: 0.7rem;
+        justify-content: flex-start;
+        margin-left: 3.5rem;
+        p {
+          cursor: pointer;
+          &:hover {
+            color: palevioletred;
+          }
+        }
+      }
+    }
+  }
+
+  .userInfos1.dark {
+    background: white;
+    color: black;
+    form {
+      textarea {
+        border: 1px solid black;
+      }
+      button {
+        background: rgb(58, 56, 56);
+        color: white;
+      }
+    }
+
+    .commentContainer {
+      .comments {
+        .commentInfo {
+          background-color: rgb(226, 222, 222);
+        }
+      }
+    }
+  }
+
+  .userInfos2 {
+    height: 100%;
+    width: 100%;
+    max-width: 800px;
+    background: rgb(58, 56, 56);
+    color: white;
+    border-radius: 10px;
+    padding-bottom: 1rem;
+    overflow-y: scroll;
+    scrollbar-width: none; 
+    &::-webkit-scrollbar {
+    width: 0;
+  }
+    .sec1 {
+      @include rowCenter;
+      justify-content: space-between;
+      margin: 10px 10px;
+      .avInfo {
+        @include rowCenter;
+        gap: 0.5rem;
+      }
+      .close {
+        cursor: pointer;
+        padding-bottom: 3rem;
+      }
+    }
+
+    .sec2 {
+      h4 {
+        margin: 10px 10px;
+        cursor: pointer;
+      }
+    }
+
+    .likes {
+      width: 100%;
+      padding: 10px 15px 10px 15px;
+      @include rowCenter;
+      margin-top: 0.5rem;
+      justify-content: space-around;
+      div {
+        @include rowCenter;
+        gap: 0.5rem;
+        &:hover {
+          color: palevioletred;
+          cursor: pointer;
+        }
+        .share {
+          transform: rotate(540deg);
+        }
+      }
+    }
+
+    .borderIcon {
+      width: 100%;
+      border-bottom: 1px solid grey;
+    }
+
+    form {
+      @include columnCenter;
+      gap: 0.5rem;
+      padding: 0 10px;
+      border-bottom: 1px solid grey;
+      textarea {
+        width: 100%;
+        height: 5rem;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        padding: 5px;
+      }
+      button {
+        height: 2rem;
+        width: 5rem;
+        color: black;
+        background: white;
+        border-radius: 30px;
+        border: none;
+        outline: none;
+        margin-bottom: 1rem;
+        &:hover {
+          cursor: pointer;
+          opacity: 0.8;
+        }
+      }
+    }
+
+    .commentContainer {
+      .comments {
+        @include rowCenter;
+        justify-content: flex-start;
+        padding: 10px;
+        gap: 0.5rem;
+        .commentInfo {
+          background-color: rgb(44, 43, 43);
+          width: 90%;
+          padding: 5px;
+          border-radius: 5px;
+          h2 {
+            font-size: 1rem;
+          }
+          p {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+          }
+        }
+      }
+      .commentIcon {
+        @include rowCenter;
+        gap: 1rem;
+        font-size: 0.7rem;
+        justify-content: flex-start;
+        margin-left: 3.5rem;
+        p {
+          cursor: pointer;
+          &:hover {
+            color: palevioletred;
+          }
+        }
+      }
+    }
+  }
+
+  .userInfos2.dark {
+    background: white;
+    color: black;
+    form {
+      textarea {
+        border: 1px solid black;
+      }
+      button {
+        background: rgb(58, 56, 56);
+        color: white;
+      }
+    }
+
+    .commentContainer {
+      .comments {
+        .commentInfo {
+          background-color: rgb(226, 222, 222);
+        }
+      }
+    }
+  }
+}
+
+.zoom.hide {
+  width: 0;
+  height: 0;
+  .userInfos1 {
+    display: none;
+  }
+  .userInfos2 {
+    display: none;
+  }
+}

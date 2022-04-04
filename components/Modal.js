@@ -5,6 +5,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleModal } from "../redux/modalSlice";
 import { togglePost } from "../redux/postSlice";
+import { setLoading } from "../redux/loadingSlice";
 import { setSsr } from "../redux/ssrSlice";
 import { useState } from "react";
 
@@ -20,6 +21,7 @@ function Modal() {
 
   const uploadPost = async (e) => {
     e.preventDefault();
+    dispatch(setLoading(true));
 
     const response = await fetch("/api/posts", {
       method: "POST",
@@ -35,13 +37,12 @@ function Modal() {
         "Content-Type": "application/json",
       },
     });
-    const responseData = await response.json();
-    console.log(responseData);
     dispatch(toggleModal());
     dispatch(setSsr(true));
     setInput("");
     setPhotoInput("");
     dispatch(togglePost());
+    dispatch(setLoading(false));
   };
 
   return (

@@ -8,7 +8,11 @@ import { useSelector, useDispatch } from "react-redux";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ReplyIcon from "@mui/icons-material/Reply";
 import { useSession } from "next-auth/react";
-import { togglePost } from '../redux/postSlice';
+import { togglePost } from "../redux/postSlice";
+import { setData } from "../redux/dataSlice";
+import { toggleZoom } from "../redux/zoomSlice";
+import { toggleCommentHandler } from "../redux/commentHandlerSlice";
+import { setLoading } from "../redux/loadingSlice";
 import { setSsr } from "../redux/ssrSlice";
 import TimeAgo from "timeago-react";
 
@@ -23,24 +27,34 @@ function Posts({ data }) {
   const dispatch = useDispatch();
 
   const deletePost = async () => {
+    dispatch(setLoading(true));
     await fetch(`/api/posts/${data._id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     });
     dispatch(togglePost());
     dispatch(setSsr(true));
+    dispatch(setLoading(false));
+  };
+
+  const toggleZooms = () => {
+    dispatch(setData(data));
+    dispatch(toggleZoom());
+    dispatch(toggleCommentHandler());
   };
 
   return (
     <div className={!theme ? s.posts : `${s.posts} ${s.dark}`} key={data._id}>
-      <section className={s.sec1}>
+      <section className={s.sec1} onClick={() => toggleZooms()}>
         <div className={s.avInfo}>
           <Avatar src={data.userImg} />
           <div>
             <h2>{data.username}</h2>
-            <p className={s.email}>{data.email}</p>
+            <p className={s.email}>
+              @{data.email.substr(0, data.email.lastIndexOf("@"))}
+            </p>
             <p>
-              Just now
+              <TimeAgo datetime={data.createdAt} />
             </p>
           </div>
         </div>
@@ -59,7 +73,7 @@ function Posts({ data }) {
         )}
 
         {data.photoUrl ? (
-          <div className={s.imageContainer}>
+          <div className={s.imageContainer} onClick={() => toggleZooms()}>
             <img src={data.photoUrl} alt="" />
           </div>
         ) : (

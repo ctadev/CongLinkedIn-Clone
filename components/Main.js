@@ -6,6 +6,9 @@ import HomeNav from "./HomeNav";
 import Modal from "./Modal";
 import Overlay from "./Overlay";
 import { useSelector } from 'react-redux';
+import Zoom from './Zoom';
+import Overlay2 from "./Overlay2";
+import Loading from "./Loading";
 
 function Main({ posts, articles }) {
   const theme = useSelector((state) => state.theme);
@@ -22,6 +25,9 @@ function Main({ posts, articles }) {
       </div>
       <Modal />
       <Overlay />
+      <Overlay2 />
+      <Zoom />
+      <Loading />
     </main>
   );
 }
