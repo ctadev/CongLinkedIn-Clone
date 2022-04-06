@@ -7,11 +7,17 @@ import { toggleModal } from "../redux/modalSlice";
 import { togglePost } from "../redux/postSlice";
 import { setLoading } from "../redux/loadingSlice";
 import { setSsr } from "../redux/ssrSlice";
-import { useState } from "react";
+import { setEmoji } from "../redux/emojiSlice";
+import { useState, useRef } from "react";
+import "emoji-mart/css/emoji-mart.css";
+import { Picker } from "emoji-mart";
+import InsertPhotoOutlinedIcon from "@mui/icons-material/InsertPhotoOutlined";
+import SentimentSatisfiedOutlinedIcon from "@mui/icons-material/SentimentSatisfiedOutlined";
 
 function Modal() {
   const dispatch = useDispatch();
   const modalState = useSelector((state) => state.modal);
+  const emoji = useSelector((state) => state.emoji);
   const { data: session } = useSession();
   const [input, setInput] = useState("");
   const [photoInput, setPhotoInput] = useState("");
@@ -19,11 +25,24 @@ function Modal() {
   const truncate = (string, n) =>
     string?.length > n ? string.substr(0, n - 1) + "..." : string;
 
+  const addEmoji = (e) => {
+    let sym = e.unified.split("-");
+    let codesArray = [];
+    sym.forEach((el) => codesArray.push("0x" + el));
+    let emoji = String.fromCodePoint(...codesArray);
+    setInput(input + emoji);
+  };
+
+  const closeModal = () => {
+    dispatch(setEmoji(false));
+    dispatch(toggleModal());
+  };
+
   const uploadPost = async (e) => {
     e.preventDefault();
     dispatch(setLoading(true));
 
-    const response = await fetch("/api/posts", {
+    await fetch("/api/posts", {
       method: "POST",
       body: JSON.stringify({
         input: input,
@@ -43,17 +62,30 @@ function Modal() {
     setPhotoInput("");
     dispatch(togglePost());
     dispatch(setLoading(false));
+    dispatch(setEmoji(false));
   };
 
   return (
     <main className={modalState ? s.modal : `${s.modal} ${s.hide}`}>
-      <section>
+      {emoji && (
+        <Picker
+          onSelect={addEmoji}
+          style={{
+            position: "absolute",
+            marginTop: "20px",
+            marginLeft: -10,
+            maxWidth: "320px",
+            borderRadius: "20px",
+            zIndex: "2",
+          }}
+          theme="dark"
+        />
+      )}
+
+      <section className={s.sec}>
         <div className={s.title}>
           <h1>Create a post</h1>
-          <CloseIcon
-            className={s.icon}
-            onClick={() => dispatch(toggleModal())}
-          />
+          <CloseIcon className={s.icon} onClick={() => closeModal()} />
         </div>
 
         <div className={s.profile}>
@@ -61,7 +93,7 @@ function Modal() {
           <h2>{session?.user?.name}</h2>
         </div>
 
-        <form onSubmit={uploadPost}>
+        <form onSubmit={uploadPost} encType="multipart/form-data">
           <div className={s.inputs}>
             <textarea
               placeholder="What do you want to talk about?"
@@ -71,12 +103,20 @@ function Modal() {
           </div>
 
           <div className={s.photo}>
-            <input
-              type="text"
-              placeholder="Add a photo URL (optional)"
-              value={truncate(photoInput, 50)}
-              onChange={(e) => setPhotoInput(e.target.value)}
-            />
+            <div className={s.icons}>
+              <SentimentSatisfiedOutlinedIcon
+                onClick={() => dispatch(setEmoji(!emoji))}
+                className={s.icon}
+              />
+              <div className={s.text}>
+                <input
+                  type="text"
+                  onChange={(e) => setPhotoInput(e.target.value)}
+                  value={truncate(photoInput, 50)}
+                  placeholder="Enter Image URL..."
+                />
+              </div>
+            </div>
             <button
               onClick={uploadPost}
               disabled={!input.trim() && !photoInput.trim()}

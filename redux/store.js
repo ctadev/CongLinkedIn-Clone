@@ -8,6 +8,7 @@ import dataSlice from './dataSlice';
 import commentSlice from "./commentSlice";
 import commentHandlerSlice from "./commentHandlerSlice";
 import loadingSlice from "./loadingSlice";
+import emojiSlice from "./emojiSlice";
 
 const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
     comment: commentSlice,
     commentHandler: commentHandlerSlice,
     loading: loadingSlice,
+    emoji: emojiSlice,
   },
 });
 
