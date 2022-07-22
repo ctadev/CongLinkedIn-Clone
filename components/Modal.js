@@ -69,6 +69,7 @@ function Modal() {
     <main className={modalState ? s.modal : `${s.modal} ${s.hide}`}>
       {emoji && (
         <Picker
+          className={s.emotes}
           onSelect={addEmoji}
           style={{
             position: "absolute",
@@ -93,7 +94,7 @@ function Modal() {
           <h2>{session?.user?.name}</h2>
         </div>
 
-        <form onSubmit={uploadPost} encType="multipart/form-data">
+        <form onSubmit={uploadPost}>
           <div className={s.inputs}>
             <textarea
               placeholder="What do you want to talk about?"

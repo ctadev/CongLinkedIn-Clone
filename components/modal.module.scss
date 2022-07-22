@@ -120,6 +120,12 @@
       }
     }
   }
+
+  .emotes {
+    @include mobile {
+      display: none;
+    }
+  }
 }
 
 .modal.hide {
